@@ -10,6 +10,17 @@ type ThreadPool interface {
 	Start() (done <-chan struct{})
 }
 
+// ThreadPoolIntervalInterface - interface to implement Worker and Tick functions
+type ThreadPoolIntervalInterface interface {
+	CreateWorker(workerIndex int)
+	OnTick()
+}
+
+// ThreadPoolInterface - interface to implement Worker Function
+type ThreadPoolInterface interface {
+	CreateWorker(workerIndex int)
+}
+
 type WorkerFunc func(workerIndex int)
 type TickFunc func()
 
